@@ -61,7 +61,7 @@ def play_round(wins, losses):
             d3 = num
             rolled3 = True
         rolls_done += 1
-    print(show_state(d1, d2, d3, wins, losses))
+        print(show_state(d1, d2, d3, wins, losses))
     total = d1 + d2 + d3
     if total == TARGET:
         print("You won!")
@@ -97,3 +97,4 @@ def main():
     
 if __name__ == "__main__":
     main()
+
