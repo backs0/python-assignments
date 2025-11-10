@@ -18,20 +18,23 @@ def read_choice(rolled1, rolled2, rolled3):
             print("Invalid input")
             continue
         choice = int(choice)
-        if 1 <= choice <= 3:
-            continue
-        else:
+        if choice < 1 or choice > 3:
             print("Invalid input")
             continue
-        if (choice == 1 and rolled1) or (choice ==2 and rolled2) or (choice == 3 and rolled3):
+        elif choice == 1 and rolled1:
             print("Sorry, you already rolled that dice. Try again.")
             continue
-        
+        elif choice == 2 and rolled2:
+            print("Sorry, you already rolled that dice. Try again.")
+            continue
+        elif choice == 3 and rolled3:
+            print("Sorry, you already rolled that dice. Try again.")
+            continue
         return choice
 
 
 def roll_die():
-    num = random.randit(DICE_MIN, DICE_MAX)
+    num = random.randint(DICE_MIN, DICE_MAX)
     return num
 
 def show_state(d1, d2, d3, wins, losses):
@@ -58,17 +61,17 @@ def play_round(wins, losses):
             d3 = num
             rolled3 = True
         rolls_done += 1
-        print(show_state(d1, d2, d3, wins, losses))
-        total = d1 + d2 + d3
-        if total == TARGET:
-            wins += 1
-            print("You won!")
-        elif total > TARGET:
-            losses += 1
-            print("You lost!")
-        else:
-            print("You neither won nor lost the game.")
-            return "none"
+    print(show_state(d1, d2, d3, wins, losses))
+    total = d1 + d2 + d3
+    if total == TARGET:
+        print("You won!")
+        return "win"
+    elif total > TARGET:
+        print("You lost!")
+        return "loss"
+    else:
+        print("You neither won nor lost the game.")
+        return "none"
                    
             
 def main():
@@ -85,8 +88,10 @@ def main():
             wins += 1
         elif result == "loss":
             losses += 1
-    print(f"#win: {wins} #loss: {losses}")
-    print("Next round!")
+        print(f"#win: {wins} #loss: {losses}")
+        print("Next round!")
+    print("Game Over!")
+
 
 
     
