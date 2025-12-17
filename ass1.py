@@ -4,10 +4,12 @@ TARGET = 12
 DICE_MIN = 1
 DICE_MAX = 6
 
+
 def print_welcome():
     print("Welcome to Dice Game 12!")
     print("Your goal is to roll three dice and reach a total of 12.")
     print("You will roll one die at a time and can quit anytime by entering 'q'.")
+
 
 def read_choice(rolled1, rolled2, rolled3):
     while True:
@@ -22,13 +24,13 @@ def read_choice(rolled1, rolled2, rolled3):
             print("Invalid input")
             continue
         elif choice == 1 and rolled1:
-            print("Sorry, you already rolled that dice. Try again.")
+            print("You already rolled that dice.")
             continue
         elif choice == 2 and rolled2:
-            print("Sorry, you already rolled that dice. Try again.")
+            print("You already rolled that dice.")
             continue
         elif choice == 3 and rolled3:
-            print("Sorry, you already rolled that dice. Try again.")
+            print("You already rolled that dice.")
             continue
         return choice
 
@@ -37,10 +39,11 @@ def roll_die():
     num = random.randint(DICE_MIN, DICE_MAX)
     return num
 
+
 def show_state(d1, d2, d3, wins, losses):
     total = d1 + d2 + d3
-    return(f"{d1} {d2} {d3} sum: {total} #win: {wins} #loss: {losses}")
-    
+    return (f"{d1} {d2} {d3} sum: {total} #win: {wins} #loss: {losses}")
+
 
 def play_round(wins, losses):
     d1 = d2 = d3 = 0
@@ -73,8 +76,8 @@ def play_round(wins, losses):
     else:
         print("You neither won nor lost the game.")
         return "none"
-                   
-            
+
+
 def main():
     print_welcome()
 
@@ -95,7 +98,5 @@ def main():
     print("Game Over!")
 
 
-
-    
 if __name__ == "__main__":
     main()

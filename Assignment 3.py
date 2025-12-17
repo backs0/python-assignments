@@ -3,7 +3,7 @@ inventory = {}
 def add_item():
     while True:
         print("Adding a New Item")
-        item_id = input("Enter item ID (unique integer): ").strip()
+        item_id = input("Enter item ID (unique integer): ")
         try:
             item_id =int(item_id)
         except ValueError:
@@ -14,22 +14,23 @@ def add_item():
             continue
 
         item_name = input("Enter item name: ").strip()
-        item_quantity = int(input("Enter quantity: ")).strip()
-        if item_quantity < 0:
-            print("Quantity cannot be negative.")
-            continue
+        item_quantity = int(input("Enter quantity: "))
+        try:
+            if item_quantity < 0:
+                print("Quantity cannot be negative.")
+                continue
         except ValueError:
             print("Invalid input! Please enter a whole number.")
-        item_price = int(input("Enter price per unit: ")).strip()
+        item_price = input("Enter price per unit: ")
         try:
             item_price = float(item_price)
         except ValueError:
             print("Invalid input! Please enter a valid number for the price.")
             continue
-        Inventory[item_id] = {
-            "name": name,
-            "quantity" = quantity,
-            "price" = price,
+        inventory[item_id] = {
+            "name": item_name,
+            "quantity": item_quantity,
+            "price": item_price,
         }
         print(f"Item '{item_name}' added successfully!")
         print()
